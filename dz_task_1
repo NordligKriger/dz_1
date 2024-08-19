@@ -1,0 +1,86 @@
+//Класс "Игрок":
+//Создайте класс Player с полями name, score, level.
+//Реализуйте конструктор, который инициализирует поля.
+//Реализуйте методы :
+//increaseScore(points) - увеличивает счет игрока.
+//increaseLevel() - увеличивает уровень игрока.
+//printInfo() - выводит информацию об игроке.
+//Создайте несколько объектов класса Player и вызовите методы increaseScore(), increaseLevel() и printInfo().
+
+#include <iostream>
+using namespace std;
+
+//класс
+class Player
+{
+private:
+	//поля
+	string name;
+	int score;
+	int level;
+public:
+	//конструктор с инициализацие полей
+	Player(string valueName, int valueScore, int valueLevel)
+	{
+		name = valueName;
+		score = valueScore;
+		level = valueLevel;
+	}
+	//конструктор по умолчанию
+	Player()
+	{
+		name = "No Name";
+		score = 0;
+		level = 0;
+	}
+	//увеличивает счет игрока
+	void increaseScore(int points)
+	{
+		score += points;
+	}
+	//увеличивает уровень игрока
+	void increaseLevel()
+	{
+		level++;
+	}
+	//Выводит информацию об игроке
+	void printInfo()
+	{
+		cout << "-------------------------" << endl;
+		cout << " Information:" << endl;
+		cout << " Name: " << name << endl;
+		cout << " Score: " << score << endl;
+		cout << " Level: " << level << endl;
+		cout << "-------------------------" << endl;
+ 	}
+};
+
+
+int main()
+{
+	//создать несколько объектов класса Player и с каждым использовать различные методы
+	
+	//1 объект
+	Player first_player("Morawk", 1500, 100);
+	first_player.increaseScore(100);
+	first_player.increaseLevel();
+	first_player.printInfo();
+
+	//2 объект
+	Player second_player("Netto", 2500, 1);
+	second_player.increaseScore(50);
+	second_player.increaseLevel();
+	second_player.printInfo();
+
+	//3 объект
+	Player third_player("Paradise", 10, 0);
+	third_player.increaseScore(50);
+	third_player.increaseLevel();
+	third_player.printInfo();
+
+	//4 объект
+	Player fourth_player;
+	fourth_player.printInfo();
+
+	return 0;
+}
