@@ -1,0 +1,102 @@
+//Класс "Геометрическая фигура":
+//Создайте абстрактный базовый класс Shape с виртуальными методами getArea() и getPerimeter().
+//Создайте классы Circle, Rectangle, Triangle, наследующие от Shape.
+//Реализуйте методы getArea() и getPerimeter() в каждом дочернем классе.
+//Создайте несколько объектов различных классов фигур и вызовите методы getArea() и getPerimeter().
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+//абстрактный класс
+class Shape
+{
+public:
+	virtual float getArea(float radius_or_first_side = 0, float height_or_second_side = 0) = 0;
+	virtual float getPerimeter(float radius_or_first_side = 0, float height_or_second_side = 0, float third_side = 0) = 0;
+};
+
+//круг
+class Circle : public Shape
+{
+public:
+	float getArea(float radius = 0, float nothing = 0) override
+	{
+		float Area;
+		Area = acos(0) * 2 * radius * radius;
+		return Area;
+	}
+	float getPerimeter(float radius = 0, float nothing = 0, float nothing_1 = 0) override
+	{
+		float Perimeter;
+		Perimeter = 2 * acos(0) * 2 * radius;
+		return Perimeter;
+	}
+};
+//прямоугольник
+class Rectangle : public Shape
+{
+public:
+	float getArea(float first_side = 0, float second_side = 0)
+	{
+		float Area;
+		Area = first_side * second_side;
+		return Area;
+	}
+	float getPerimeter(float first_side = 0, float second_side = 0, float nothing = 0) override
+	{
+		float Perimeter;
+		Perimeter = 2 * first_side * 2 * second_side;
+		return Perimeter;
+	}
+};
+
+class Triangle : public Shape
+{
+public:
+	float getArea(float height = 0, float footing = 0)
+	{
+		float Area;
+		Area = height * footing * 0.5;
+		return Area;
+	}
+	float getPerimeter(float first_side = 0, float second_side = 0, float third_side = 0) override
+	{
+		float Perimeter;
+		if (first_side + second_side > third_side && first_side + third_side > second_side && second_side + third_side > first_side)
+		{
+			Perimeter = first_side + second_side + third_side;
+			return Perimeter;
+		}
+		else
+		{
+			cout << "ERROR!!!" << endl;
+			return 0;
+		}
+	}
+};
+
+int main()
+{
+
+	//объект крга
+	Circle shape_1;
+	cout << "Circle: \n";
+	cout << "Area: " << shape_1.getArea(1) << endl;
+	cout << "Perimeter: " << shape_1.getPerimeter(1) << endl << endl;
+	
+	//объект прямоугольника
+	Rectangle shape_2;
+	cout << "Rectangle:  \n";
+	cout << "Area: " << shape_2.getArea(3, 2) << endl;
+	cout << "Perimeter: " << shape_2.getPerimeter(3, 2) << endl << endl;
+
+	//объект тругольника
+	Triangle shape_3;
+	cout << "Triangle:  \n";
+	cout << "Area: " << shape_3.getArea(3, 2) << endl;
+	cout << "Perimeter: " << shape_3.getPerimeter(3, 2, 84) << endl << endl;
+
+	return 0;
+}
