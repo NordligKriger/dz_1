@@ -1,0 +1,71 @@
+//Класс "Банковский счет":
+//Создайте класс BankAccount с полями accountNumber, balance и owner.
+//Реализуйте конструктор, который инициализирует поля.
+//Реализуйте методы :
+//deposit(amount) - добавляет деньги на счет.
+//withdraw(amount) - снимает деньги со счета.
+//printBalance() - выводит баланс счета.
+//Создайте несколько объектов класса BankAccount и вызовите методы deposit(), withdraw() и printBalance().
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount
+{
+private:
+	int accountNumber;
+	double balance;
+	string owner;
+public:
+	//конструктор
+	BankAccount(int accountNumber_of_user = 0, double balance_of_user = 0, string name_of_owner = "No Name")
+	{
+		accountNumber = accountNumber_of_user;
+		balance = balance_of_user;
+		owner = name_of_owner;
+	}
+
+	//1-ый метод
+	void deposit(double amount = 0)
+	{
+		balance += amount;
+	}
+	//2-ой метод
+	void withdraw(double amount = 0)
+	{
+		balance -= amount;
+	}
+	//3-ий метод
+	void printBalance()
+	{
+		cout << "------------------------------" << endl;
+		cout << "Name: " << owner << endl;
+		cout << "Number: " << accountNumber << endl;
+		cout << "Balance: " << balance << " RUB " << endl;
+		cout << "------------------------------" << endl << endl;
+	}
+};
+
+int main()
+{
+	//1-ый пользователь
+	BankAccount account_1(12345678, 8500, "Ivan Abramov");
+	account_1.deposit(500);
+	account_1.withdraw(8000);
+	account_1.printBalance();
+
+	//2-ой пользователь
+	BankAccount account_2(99999901, 999, "Nikolai Vetrov");
+	account_2.deposit(1);
+	account_2.withdraw(800);
+	account_2.printBalance();
+
+	//1-ый пользователь
+	BankAccount account_3(77777777, 0, "Ivan Abramov");
+	account_3.deposit(65000);
+	account_3.withdraw(5000);
+	account_3.printBalance();
+
+	return 0;
+}
