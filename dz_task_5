@@ -1,0 +1,72 @@
+//Класс "Товар":
+//Создайте класс Product с полями name, price, quantity и category.
+//Реализуйте конструктор, который инициализирует поля.
+//Реализуйте методы :
+//getDiscountPrice(percentage) - возвращает цену товара со скидкой.
+//printInfo() - выводит информацию о товаре.
+//Создайте несколько объектов класса Product и вызовите методы getDiscountPrice() и printInfo().
+
+#include <iostream>
+using namespace std;
+
+class Product
+{
+private:
+	string name;
+	double price;
+	int quantity;
+	string category;
+public:
+	//конструктор
+	Product(string name_of_product = "No Name", double price_of_product = 0, int quantity_of_product = 0, string category_of_product = "No Category")
+	{
+		name = name_of_product;
+		price = price_of_product;
+		quantity = quantity_of_product;
+		category = category_of_product;
+	}
+	//1-ый метод
+	double getDiscountPrice(double percentage)
+	{
+		if (percentage > 100 || percentage < 0)
+		{
+			cout << "ERROR!!!" << endl;
+			return 0;
+		}
+		else
+		{
+			price = price * (1 - (percentage / 100));
+			return price;
+		}
+	}
+	//2-ой метод
+	void printInfo()
+	{
+		cout << "------------------------------" << endl;
+		cout << "Name: " << name << endl;
+		cout << "Price : " << price << endl;
+		cout << "Quantity: " << quantity << endl;
+		cout << "Category: " << category << endl;
+		cout << "------------------------------" << endl << endl;
+	}
+};
+
+int main()
+{
+	//1-ый товар
+	Product product_1("Apple", 20, 2, "Fruit");
+	product_1.getDiscountPrice(50);
+	product_1.printInfo();
+
+	//2-ой товар
+	Product product_2("Potato", 30, 4, "Fruit");
+	product_2.getDiscountPrice(75);
+	product_2.printInfo();
+
+	//3-ий товар
+	Product product_3("Beaf", 500, 1, "Meat");
+	product_3.getDiscountPrice(25);
+	product_3.printInfo();
+
+	return 0;
+}
