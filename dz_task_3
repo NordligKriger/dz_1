@@ -1,0 +1,79 @@
+//Класс "Книга":
+//Создайте класс Book с полями title, author, year и price.
+//Реализуйте конструктор, который инициализирует поля.
+//Реализуйте методы :
+//getDiscountPrice(percentage) - возвращает цену книги со скидкой.
+//printInfo() - выводит информацию о книге.
+//Создайте несколько объектов класса Book и вызовите методы getDiscountPrice() и printInfo().
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book
+{
+private:
+	string title;
+	string author;
+	int year;
+	double price;
+public:
+	//конструктор, который инициализирует поля( встроенный конструктор по умолчанию с помощью значений по умолчанию)
+	Book(string title_of_book = "No Title", string author_of_book = "No Author", int year_of_book = 0, double price_of_book = 0)
+	{
+		title = title_of_book;
+		author = author_of_book;
+		year = year_of_book;
+		price = price_of_book;
+	}
+
+	//возвращает цену книги со скидкой
+	double getDiscountPrice(double percentage)
+	{
+		if (percentage > 100 || percentage < 0)
+		{
+			cout << "ERROR!!!";
+			return 0;
+		}
+		else
+		{
+			price = price * (1 - (percentage / 100));
+			return price;
+		}
+	}
+
+	//вывод информации на экран
+	void printInfo()
+	{
+		cout << "------------------------------" << endl;
+		cout << "Title: " << title << endl;
+		cout << "Author: " << author << endl;
+		cout << "Year: " << year << endl;
+		cout << "Price: " << price << endl;
+		cout << "------------------------------" << endl << endl;
+	}
+
+
+};
+
+int main()
+{
+	//1-я книга
+	Book book_1("Dune", "Frank Gerbert", 1950, 1500);
+	book_1.printInfo();
+	book_1.getDiscountPrice(50);
+	book_1.printInfo();
+
+	//2-я книга
+	Book book_2("The Witcher", "Anjey Sapkovsky", 1986, 1000);
+	book_2.printInfo();
+	book_2.getDiscountPrice(75);
+	book_2.printInfo();
+
+	//3-я книга
+	Book book_3("Lord of the Flies", "William Golding", 1983, 500);
+	book_3.printInfo();
+	book_3.getDiscountPrice(100);
+	book_3.printInfo();
+	return 0;
+}
